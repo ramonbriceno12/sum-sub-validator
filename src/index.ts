@@ -1,8 +1,5 @@
 // src/index.ts
 import express, {
-    Request,
-    Response,
-    NextFunction,
     RequestHandler,
     ErrorRequestHandler,
   } from 'express';
@@ -81,6 +78,7 @@ import express, {
       const userId    = applicant.id;
   
       // 2) Generate SDK access token
+      // A esta peticion se le debe agregar el email, telefono y nombre enviado desde el front para guardarlo en nuestro dashboard de sumsub.
       const tokenPath = '/resources/accessTokens/sdk';
       const tokenReq  = { ttlInSecs: 600, userId, levelName: 'id-and-liveness' };
       const tokenBody = JSON.stringify(tokenReq);
