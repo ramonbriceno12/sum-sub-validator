@@ -4,22 +4,53 @@
   <meta charset="UTF-8">
   <title>Sumsub ID & Liveness Demo</title>
   <style>
+    /* 1. Make html/body fill the viewport and remove default margins */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 2. Flex container: header + main fill full height */
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: sans-serif;
+    }
+
+    header {
+      flex: 0 0 auto;
+      padding: 1rem;
+      text-align: center;
+      background: #f4f4f4;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* 3. Main area grows to fill all available space */
+    main {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 4. Sumsub container takes 100% of its parent (main) */
     #sumsub-websdk-container {
+      flex: 1 1 auto;
       width: 100%;
-      max-width: 400px;
-      height: 600px;
-      margin: 2rem auto;
-      border: 1px solid #ddd;
+      height: 100%;
+      /* optional: remove border if you don't want it */
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>Sumsub: ID + Liveness</h1>
-  <div id="sumsub-websdk-container"></div>
+  <main>
+    <div id="sumsub-websdk-container"></div>
+  </main>
 
   <!-- Sumsub WebSDK bundle -->
   <script src="https://static.sumsub.com/idensic/static/sns-websdk-builder.js"></script>
-  <!-- our frontend logic -->
+  <!-- your frontend logic -->
   <script type="module" src="./app.js"></script>
 </body>
 </html>
